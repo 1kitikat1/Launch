@@ -1,0 +1,214 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'org.beryx.runtime' version '1.13.0'
+}
+
+group = 'usa.kitikat'
+version = '1.6.2'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+javafx {
+    version = '21.0.6'
+    modules = [
+            'javafx.controls',
+            'javafx.graphics',
+            'javafx.base'
+    ]
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+    implementation 'io.github.cdagaming:DiscordIPC:0.11.3'
+    implementation 'net.java.dev.jna:jna:5.16.0'
+    implementation 'net.java.dev.jna:jna-platform:5.16.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+application {
+    mainClass = 'usa.kitikat.AttackLauncher'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    archiveBaseName = 'AttackLauncher'
+
+    manifest {
+        attributes(
+                // Boot не наследует Application — иначе JavaFX на classpath
+                // падает с «JavaFX runtime components are missing»
+                'Main-Class': 'usa.kitikat.Boot',
+                // версия приложения — читается через Package.getImplementationVersion()
+                'Implementation-Version': project.version
+        )
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    exclude(
+            'META-INF/*.RSA',
+            'META-INF/*.SF',
+            'META-INF/*.DSA'
+    )
+}
+tasks.withType(JavaExec).configureEach {
+    classpath = sourceSets.main.runtimeClasspath
+
+    jvmArgs = [
+            '--module-path', configurations.runtimeClasspath.asPath,
+            '--add-modules', 'javafx.controls,javafx.graphics,javafx.base'
+    ]
+}
+
+tasks.register('debugDump', JavaExec) {
+    group = 'application'
+    mainClass = 'usa.kitikat.DebugDump'
+    classpath = sourceSets.main.runtimeClasspath
+    doFirst {
+        def log = new FileOutputStream(file("$buildDir/debugDump.log"), true)
+        standardOutput = log
+        errorOutput = log
+        println "debugDump -> ${'$'}{mainClass.get()} cwd=${'$'}{workingDir}"
+    }
+}
+
+/**
+ * Портативный AttackLauncher.exe — jpackage app-image: папка с exe,
+ * приложением и вшитой Java. Ставить ничего не надо, просто запускать.
+ */
+tasks.register('packageExe') {
+    group = 'distribution'
+    description = 'Собирает портативный AttackLauncher.exe (app-image с вшитой Java)'
+    dependsOn tasks.named('jar')
+
+    doLast {
+        def input = file("$buildDir/jpackage-input")
+        delete input
+        input.mkdirs()
+        copy {
+            from tasks.jar.archiveFile
+            into input
+        }
+        // от прошлой сборки образ уже существует — jpackage на нём падает
+        delete file("$buildDir/jpackage/AttackLauncher")
+
+        def jpackage = "${System.getProperty('java.home')}/bin/jpackage.exe"
+        if (!file(jpackage).exists()) {
+            throw new GradleException("jpackage не найден: $jpackage")
+        }
+
+        exec {
+            commandLine jpackage,
+                    '--type', 'app-image',
+                    '--name', 'AttackLauncher',
+                    '--input', input.absolutePath,
+                    '--main-jar', tasks.jar.archiveFileName.get(),
+                    '--main-class', 'usa.kitikat.Boot',
+                    '--icon', file('src/main/resources/assets/nemesis-icon.ico').absolutePath,
+                    '--dest', file("$buildDir/jpackage").absolutePath,
+                    '--app-version', project.version,
+                    '--description', 'Attack Launcher',
+                    '--vendor', 'kitikat'
+        }
+
+        def exe = file("$buildDir/jpackage/AttackLauncher/AttackLauncher.exe")
+        if (!exe.exists()) {
+            throw new GradleException("exe не появился: $exe")
+        }
+
+        /*
+         * jpackage не кладёт java.exe в runtime, а лаунчер запускает
+         * Minecraft именно им (java.home/bin/java.exe) — кладём сами,
+         * тем же JDK, из которого собран образ.
+         */
+        def runtimeBin = file("$buildDir/jpackage/AttackLauncher/runtime/bin")
+        ['java.exe', 'javaw.exe'].each { name ->
+            def source = file("${System.getProperty('java.home')}/bin/$name")
+            if (!source.exists()) {
+                throw new GradleException("нет ${name} в ${source.parentFile}")
+            }
+            copy {
+                from source
+                into runtimeBin
+            }
+        }
+        if (!file("$runtimeBin/java.exe").exists()) {
+            throw new GradleException("java.exe не попал в образ")
+        }
+
+        println "exe -> ${exe} (${exe.length() / 1024 / 1024} МБ, с папкой app+runtime)"
+    }
+}
+
+/**
+ * Релизный дистрибутив для автообновления: zip папки приложения
+ * (в архиве лежит каталог AttackLauncher/ с exe, app/ и runtime/)
+ * плюс version.json, который кладётся в main репозитория Launch.
+ *
+ * <p>Порядок выпуска версии:</p>
+ * <ol>
+ *   <li>поднять version в этом файле (1.0.0 → 1.1.0);</li>
+ *   <li>{@code gradlew packageRelease};</li>
+ *   <li>создать Release в 1kitikat1/Launch (тег v1.1.0) и загрузить zip как asset;</li>
+ *   <li>положить build/release/version.json в main репозитория Launch.</li>
+ * </ol>
+ */
+tasks.register('packageRelease') {
+    group = 'distribution'
+    description = 'Zip приложения + version.json для репозитория Launch'
+    dependsOn tasks.named('packageExe')
+
+    doLast {
+        def imageDir = file("$buildDir/jpackage/AttackLauncher")
+        def outDir = file("$buildDir/release")
+        delete outDir
+        outDir.mkdirs()
+
+        def zip = file("$outDir/AttackLauncher-${project.version}.zip")
+        ant.zip(destfile: zip, basedir: imageDir.parentFile,
+                includes: 'AttackLauncher/**')
+
+        def jsonUrl = "https://github.com/1kitikat1/Launch/releases" +
+                "/download/v${project.version}/AttackLauncher-${project.version}.zip"
+        // пишем руками, а не JsonOutput — там кириллицу ломает в \uXXXX,
+        // а файл в main придётся править человеку
+        def json = """{
+  "version": "${project.version}",
+  "url": "${jsonUrl}",
+  "notes": "Attack: платный клиент Attack DLC виден только с активным ключом, фоновое обновление лаунчера с прогрессом снизу, окно блокировки клиента в его стиле, ник аккаунта в Discord RPC"
+}
+"""
+        // именно UTF-8: GitHub отдаёт файл как есть, а по умолчанию тут cp1251
+        file("$outDir/version.json").setText(json, 'UTF-8')
+
+        println "zip     -> ${zip} (${zip.length() / 1024 / 1024} МБ)"
+        println "version -> ${file("$outDir/version.json")}"
+        println "url     -> ${jsonUrl}"
+    }
+}
+test {
+    useJUnitPlatform()
+}
