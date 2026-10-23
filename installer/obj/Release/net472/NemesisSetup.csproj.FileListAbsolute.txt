@@ -1,0 +1,10 @@
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.csproj.AssemblyReference.cache
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.AssemblyInfoInputs.cache
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.AssemblyInfo.cs
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.csproj.CoreCompileInputs.cache
+C:\Users\Kitikat\Desktop\Loader\installer\bin\Release\net472\NemesisSetup.exe.config
+C:\Users\Kitikat\Desktop\Loader\installer\bin\Release\net472\NemesisSetup.exe
+C:\Users\Kitikat\Desktop\Loader\installer\bin\Release\net472\NemesisSetup.pdb
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.exe
+C:\Users\Kitikat\Desktop\Loader\installer\obj\Release\net472\NemesisSetup.pdb

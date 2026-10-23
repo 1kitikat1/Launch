@@ -1,0 +1,29 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'owner'",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'owner')",
+        ".write": "auth != null && (auth.uid === $uid && (!data.exists() ? (newData.child('role').val() === 'free' && newData.child('username').isString() && newData.child('username').val() != '' && newData.child('createdAt').val() !== null) : (newData.child('role').val() === data.child('role').val() && newData.child('username').val() === data.child('username').val())) || root.child('users').child(auth.uid).child('role').val() === 'owner')",
+        "activatedKey": {
+          ".validate": "newData.val() === data.val() || (newData.isString() && newData.val() != '' && root.child('keys').child(newData.val()).child('owner').val() === auth.uid)"
+        },
+        "planDays": {
+          ".validate": "newData.val() === data.val()"
+        },
+        "subscriptionEnd": {
+          ".validate": "newData.val() === data.val()"
+        }
+      }
+    },
+    "keys": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'owner'",
+      "$key": {
+        ".read": "auth != null",
+        ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'owner' || (data.exists() && data.child('owner').val() === null && newData.child('owner').val() === auth.uid && newData.child('value').val() === data.child('value').val() && newData.child('days').val() === data.child('days').val()))"
+      }
+    }
+  }
+}

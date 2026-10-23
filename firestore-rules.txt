@@ -1,0 +1,52 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Уровни привилегий по порядку: чем выше rank, тем больше доступ.
+    function tierRank(tier) {
+      return tier == 'NONE'    ? 0 :
+             tier == 'HVH'     ? 1 :
+             tier == 'LEGIT'   ? 2 :
+             tier == 'YT'      ? 3 :
+             tier == 'FAME'    ? 4 :
+             tier == 'NEMAOWN' ? 5 : 0;
+    }
+
+    // Привилегия пользователя: { tier, promoText }.
+    // Свои данные видит и меняет только владелец (uid из токена).
+    //
+    // Защита от самовыдачи: тир можно поднять только до FAME и только вверх.
+    // NEMAOWN выдаётся вручную в консоли — создатель не может назначить
+    // его себе кодом.
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid
+        && tierRank(request.resource.data.tier) <= 4;
+      allow update: if request.auth != null && request.auth.uid == uid
+        && tierRank(request.resource.data.tier) >= tierRank(resource.data.tier)
+        && tierRank(request.resource.data.tier) <= 4;
+      allow delete: if false;
+    }
+
+    // Промокод: { tier, text, usedBy, createdAt }.
+    // Прочитать может любой вошедший — иначе нельзя проверить код.
+    match /promocodes/{code} {
+      allow read: if request.auth != null;
+
+      // Создавать промокоды может только владелец панели (NEMAOWN).
+      allow create: if request.auth != null
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.tier == 'NEMAOWN';
+
+      // «Один код — один аккаунт»: usedBy можно заполнить только своим
+      // uid и только если поле пустое. Повторная активация — отклонение.
+      allow update: if request.auth != null
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['usedBy'])
+        && resource.data.usedBy == ''
+        && request.resource.data.usedBy == request.auth.uid;
+
+      allow delete: if false;
+    }
+  }
+}

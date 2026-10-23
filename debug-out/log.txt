@@ -1,0 +1,692 @@
+[    66 ms] ** DebugDump started, user.dir=C:\Users\Kitikat\Desktop\Loader
+[    99 ms] saved uiScale = 1.0, accent = pink
+[   100 ms] building MainShell...
+[  1500 ms] MainShell built
+[  1517 ms] scene built
+[  1519 ms] showing stage...
+[  1522 ms] applyLayout scale=1,00 logical=1060,0x700,0
+[  1859 ms] stage shown, size = 1060.0x700.0
+[  1861 ms] animation timer started
+[  1864 ms] driver started
+[  2875 ms] tick frames=43 stage=1060.0x700.0 scene=1060.0x700.0
+[  3878 ms] tick frames=105 stage=1060.0x700.0 scene=1060.0x700.0
+[  4367 ms] queue: dump onboarding
+[  4370 ms] ================ onboarding ================
+[  4374 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[  4383 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=136
+[  4384 ms] center(content) = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[  4386 ms] SIZES: shell min=-1.0x-1.0 pref=816.0x730.0
+[  4390 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[  4395 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 984,0x636,0]
+[  4397 ms]        sidebar min=-1.0x-1.0 pref=62.0x254.0
+[  4399 ms]        sidebar local=[0,0,0,0 62,0x650,0] scene=[0,0,50,0 62,0x650,0] | labels: "Игры" vis=false man=false op=0,00; "Профиль" vis=false man=false op=0,00; "Плагины" vis=false man=false op=0,00; "Настройки" vis=false man=false op=0,00; "Закрыть" vis=false man=false op=0,00; 
+[  4400 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[  4402 ms] pageScroll = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[  4403 ms] viewport   = local=[0,0,0,0 980,0x632,0] scene=[64,0,52,0 980,0x632,0]
+[  4405 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0] visible=false
+[  4406 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0]
+[  4406 ms] content(pageLayer) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[  4407 ms]   pref   = 736.0 x 662.0
+[  4408 ms]   pref@viewportW = 490.0
+[  4409 ms]   min    = 301.0 x 318.0
+[  4409 ms]   actual = 980.0 x 490.0
+[  4411 ms]   contentBias = HORIZONTAL
+[  4411 ms]   child(page) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[  4412 ms]     pref    = 736.0 x 662.0
+[  4413 ms]     pref@w  = 490.0
+[  4414 ms]     actual  = 980.0 x 490.0
+[  4415 ms]     bias    = HORIZONTAL
+[  4417 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[  4418 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[  4418 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[  4419 ms]       child FlowPane local=[0,0,0,0 924,0x330,0] prefH=502.0
+[  4419 ms]     sum(children prefHeight) = 402.0
+[  4420 ms] vvalue = 0.0  hvalue = 0.0
+[  4423 ms] OUTSIDE WINDOW (1):
+[  4425 ms]     ImageView.image-view wallpaper-view scene=[-4,9,-3,2 1069,8x706,5]
+[  4426 ms] OUTSIDE CONTENT AREA (0):
+[  4428 ms] 
+[  4871 ms] [shot] onboarding.png 1060x700 framesBefore=136
+[  4872 ms] queue: select onboarding option
+[  4880 ms] tick frames=136 stage=1060.0x700.0 scene=1060.0x700.0
+[  5378 ms] [screen] onboarding-screen.png 1660x1300 stage=[750,247 1060x700]
+[  5389 ms] onboarding options found: 0
+[  5390 ms] option not found: 1
+[  5675 ms] queue: dump onboarding selected
+[  5678 ms] ================ onboarding-selected ================
+[  5681 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[  5682 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=155
+[  5683 ms] center(content) = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[  5686 ms] SIZES: shell min=-1.0x-1.0 pref=928.0x730.0
+[  5688 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[  5689 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 872,0x636,0]
+[  5690 ms]        sidebar min=-1.0x-1.0 pref=174.0x254.0
+[  5693 ms]        sidebar local=[0,0,0,0 174,0x650,0] scene=[0,0,50,0 174,0x650,0] | labels: "Игры" vis=true man=true op=0,75; "Профиль" vis=true man=true op=0,75; "Плагины" vis=true man=true op=0,75; "Настройки" vis=true man=true op=0,75; "Закрыть" vis=true man=true op=0,75; 
+[  5694 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[  5695 ms] pageScroll = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[  5696 ms] viewport   = local=[0,0,0,0 868,0x632,0] scene=[176,0,52,0 868,0x632,0]
+[  5698 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0] visible=false
+[  5699 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0]
+[  5700 ms] content(pageLayer) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[  5702 ms]   pref   = 736.0 x 662.0
+[  5704 ms]   pref@viewportW = 490.0
+[  5705 ms]   min    = 301.0 x 318.0
+[  5705 ms]   actual = 868.0 x 490.0
+[  5706 ms]   contentBias = HORIZONTAL
+[  5706 ms]   child(page) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[  5708 ms]     pref    = 736.0 x 662.0
+[  5708 ms]     pref@w  = 490.0
+[  5709 ms]     actual  = 868.0 x 490.0
+[  5709 ms]     bias    = HORIZONTAL
+[  5710 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[  5711 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[  5711 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[  5712 ms]       child FlowPane local=[0,0,0,0 812,0x330,0] prefH=502.0
+[  5712 ms]     sum(children prefHeight) = 402.0
+[  5712 ms] vvalue = 0.0  hvalue = 0.0
+[  5715 ms] OUTSIDE WINDOW (1):
+[  5717 ms]     ImageView.image-view wallpaper-view scene=[-7,4,-4,9 1074,7x709,7]
+[  5717 ms] OUTSIDE CONTENT AREA (0):
+[  5718 ms] 
+[  5882 ms] tick frames=155 stage=1060.0x700.0 scene=1060.0x700.0
+[  5903 ms] [shot] onboarding-selected.png 1060x700 framesBefore=155
+[  6058 ms] [screen] onboarding-selected-screen.png 1660x1300 stage=[750,247 1060x700]
+[  6078 ms] queue: finish onboarding
+[  6079 ms] not found .primary-button: Продолжить
+[  6885 ms] tick frames=207 stage=1060.0x700.0 scene=1060.0x700.0
+[  7081 ms] queue: dump after onboarding
+[  7083 ms] ================ after-onboarding ================
+[  7084 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[  7085 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=219
+[  7086 ms] center(content) = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[  7086 ms] SIZES: shell min=-1.0x-1.0 pref=816.0x730.0
+[  7087 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[  7087 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 984,0x636,0]
+[  7087 ms]        sidebar min=-1.0x-1.0 pref=62.0x254.0
+[  7089 ms]        sidebar local=[0,0,0,0 62,0x650,0] scene=[0,0,50,0 62,0x650,0] | labels: "Игры" vis=false man=false op=0,00; "Профиль" vis=false man=false op=0,00; "Плагины" vis=false man=false op=0,00; "Настройки" vis=false man=false op=0,00; "Закрыть" vis=false man=false op=0,00; 
+[  7090 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[  7092 ms] pageScroll = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[  7093 ms] viewport   = local=[0,0,0,0 980,0x632,0] scene=[64,0,52,0 980,0x632,0]
+[  7093 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0] visible=false
+[  7094 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0]
+[  7096 ms] content(pageLayer) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[  7096 ms]   pref   = 736.0 x 662.0
+[  7097 ms]   pref@viewportW = 490.0
+[  7097 ms]   min    = 301.0 x 318.0
+[  7098 ms]   actual = 980.0 x 490.0
+[  7098 ms]   contentBias = HORIZONTAL
+[  7098 ms]   child(page) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[  7099 ms]     pref    = 736.0 x 662.0
+[  7099 ms]     pref@w  = 490.0
+[  7099 ms]     actual  = 980.0 x 490.0
+[  7099 ms]     bias    = HORIZONTAL
+[  7100 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[  7101 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[  7101 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[  7102 ms]       child FlowPane local=[0,0,0,0 924,0x330,0] prefH=502.0
+[  7102 ms]     sum(children prefHeight) = 402.0
+[  7102 ms] vvalue = 0.0  hvalue = 0.0
+[  7104 ms] OUTSIDE WINDOW (1):
+[  7104 ms]     ImageView.image-view wallpaper-view scene=[-8,0,-5,3 1075,9x710,5]
+[  7106 ms] OUTSIDE CONTENT AREA (0):
+[  7106 ms] 
+[  7294 ms] [shot] after-onboarding.png 1060x700 framesBefore=219
+[  7444 ms] [screen] after-onboarding-screen.png 1660x1300 stage=[750,247 1060x700]
+[  7683 ms] queue: dump games 100%
+[  7687 ms] ================ games-100 ================
+[  7688 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[  7688 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=235
+[  7689 ms] center(content) = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[  7689 ms] SIZES: shell min=-1.0x-1.0 pref=928.0x730.0
+[  7691 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[  7691 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 872,0x636,0]
+[  7692 ms]        sidebar min=-1.0x-1.0 pref=174.0x254.0
+[  7692 ms]        sidebar local=[0,0,0,0 174,0x650,0] scene=[0,0,50,0 174,0x650,0] | labels: "Игры" vis=true man=true op=0,37; "Профиль" vis=true man=true op=0,37; "Плагины" vis=true man=true op=0,37; "Настройки" vis=true man=true op=0,37; "Закрыть" vis=true man=true op=0,37; 
+[  7692 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[  7693 ms] pageScroll = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[  7695 ms] viewport   = local=[0,0,0,0 868,0x632,0] scene=[176,0,52,0 868,0x632,0]
+[  7695 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0] visible=false
+[  7695 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0]
+[  7696 ms] content(pageLayer) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[  7696 ms]   pref   = 736.0 x 662.0
+[  7697 ms]   pref@viewportW = 490.0
+[  7698 ms]   min    = 301.0 x 318.0
+[  7698 ms]   actual = 868.0 x 490.0
+[  7698 ms]   contentBias = HORIZONTAL
+[  7699 ms]   child(page) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[  7699 ms]     pref    = 736.0 x 662.0
+[  7699 ms]     pref@w  = 490.0
+[  7699 ms]     actual  = 868.0 x 490.0
+[  7699 ms]     bias    = HORIZONTAL
+[  7700 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[  7700 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[  7700 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[  7700 ms]       child FlowPane local=[0,0,0,0 812,0x330,0] prefH=502.0
+[  7700 ms]     sum(children prefHeight) = 402.0
+[  7701 ms] vvalue = 0.0  hvalue = 0.0
+[  7701 ms] OUTSIDE WINDOW (1):
+[  7702 ms]     ImageView.image-view wallpaper-view scene=[-7,1,-4,7 1074,3x709,4]
+[  7702 ms] OUTSIDE CONTENT AREA (0):
+[  7702 ms] 
+[  7805 ms] [shot] games-100.png 1060x700 framesBefore=235
+[  7888 ms] tick frames=235 stage=1060.0x700.0 scene=1060.0x700.0
+[  7955 ms] [screen] games-100-screen.png 1660x1300 stage=[750,247 1060x700]
+[  8285 ms] update self-test starting
+[  8328 ms] update test server on 127.0.0.1:54910
+[  8630 ms] update fetch -> version=9.9.9 url=http://127.0.0.1:54910/NemesisLauncher-9.9.9.zip notes=Тестовая версия 9.9.9 — проверка обновления.
+[  8635 ms] update current=dev isNewer=false | 1.0.0<1.1.0=true 1.1.0<1.1.0=false 2.0.0<1.9.9=false dev<1.1.0=false
+[  8759 ms] update status: Архив скачан.
+[  8764 ms] update download -> 2097152 байт, прогресс дорос до 100%
+[  8765 ms] ---- update script (30 строк) ----
+[  8766 ms]   $ErrorActionPreference = 'Stop'
+[  8766 ms]   $appDir = 'C:\Users\Kitikat\Desktop\Loader\build\jpackage\NemesisLauncher'
+[  8768 ms]   $zip = 'C:\Users\Kitikat\AppData\Local\Temp\nemesis-update-test-18029596846428792380.zip'
+[  8768 ms]   
+[  8768 ms]   # ждём, пока лаунчер полностью завершится
+[  8769 ms]   do {
+[  8769 ms]       Start-Sleep -Milliseconds 700
+[  8769 ms]       $busy = @()
+[  8769 ms]       $busy += Get-Process -Name 'NemesisLauncher' -ErrorAction SilentlyContinue
+[  8770 ms]       $busy += Get-CimInstance Win32_Process -Filter "Name='java.exe'" -ErrorAction SilentlyContinue |
+[  8770 ms]                Where-Object { $_.CommandLine -like ('*' + $appDir + '*') }
+[  8770 ms]   } while ($busy.Count -gt 0)
+[  8772 ms]   
+[  8772 ms]   $tmp = Join-Path $env:TEMP 'nemesis-update-unpack'
+[  8772 ms]   if (Test-Path $tmp) { Remove-Item $tmp -Recurse -Force }
+[  8772 ms]   Expand-Archive -Path $zip -DestinationPath $tmp -Force
+[  8773 ms]   
+[  8773 ms]   $src = $tmp
+[  8774 ms]   if (Test-Path (Join-Path $tmp 'NemesisLauncher')) {
+[  8774 ms]       $src = Join-Path $tmp 'NemesisLauncher'
+[  8775 ms]   }
+[  8775 ms]   robocopy $src $appDir /MIR /NFL /NDL /NJH /NJS /R:2 /W:2 | Out-Null
+[  8776 ms]   
+[  8776 ms]   if (Test-Path (Join-Path $appDir 'NemesisLauncher.exe')) {
+[  8776 ms]       Start-Process -FilePath (Join-Path $appDir 'NemesisLauncher.exe')
+[  8777 ms]   }
+[  8777 ms]   
+[  8777 ms]   Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+[  8777 ms]   Remove-Item $zip -Force -ErrorAction SilentlyContinue
+[  8778 ms]   Remove-Item -LiteralPath $MyInvocation.MyCommand.Path -Force -ErrorAction SilentlyContinue
+[  8891 ms] tick frames=294 stage=1060.0x700.0 scene=1060.0x700.0
+[  9187 ms] queue: show update dialog
+[  9893 ms] tick frames=356 stage=1060.0x700.0 scene=1060.0x700.0
+[ 10689 ms] queue: shot update dialog
+[ 10691 ms] ================ update-dialog ================
+[ 10691 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[ 10692 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=406
+[ 10692 ms] center(content) = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[ 10693 ms] SIZES: shell min=-1.0x-1.0 pref=816.0x730.0
+[ 10693 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[ 10694 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 984,0x636,0]
+[ 10694 ms]        sidebar min=-1.0x-1.0 pref=62.0x254.0
+[ 10696 ms]        sidebar local=[0,0,0,0 62,0x650,0] scene=[0,0,50,0 62,0x650,0] | labels: "Игры" vis=false man=false op=0,00; "Профиль" vis=false man=false op=0,00; "Плагины" vis=false man=false op=0,00; "Настройки" vis=false man=false op=0,00; "Закрыть" vis=false man=false op=0,00; 
+[ 10697 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[ 10697 ms] pageScroll = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[ 10698 ms] viewport   = local=[0,0,0,0 980,0x632,0] scene=[64,0,52,0 980,0x632,0]
+[ 10698 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0] visible=false
+[ 10699 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0]
+[ 10700 ms] content(pageLayer) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[ 10700 ms]   pref   = 736.0 x 662.0
+[ 10702 ms]   pref@viewportW = 490.0
+[ 10703 ms]   min    = 301.0 x 318.0
+[ 10703 ms]   actual = 980.0 x 490.0
+[ 10703 ms]   contentBias = HORIZONTAL
+[ 10704 ms]   child(page) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[ 10704 ms]     pref    = 736.0 x 662.0
+[ 10706 ms]     pref@w  = 490.0
+[ 10706 ms]     actual  = 980.0 x 490.0
+[ 10706 ms]     bias    = HORIZONTAL
+[ 10707 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[ 10708 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[ 10709 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[ 10709 ms]       child FlowPane local=[0,0,0,0 924,0x330,0] prefH=502.0
+[ 10710 ms]     sum(children prefHeight) = 402.0
+[ 10710 ms] vvalue = 0.0  hvalue = 0.0
+[ 10712 ms] OUTSIDE WINDOW (1):
+[ 10713 ms]     ImageView.image-view wallpaper-view scene=[-1,4,-0,9 1062,9x701,9]
+[ 10714 ms] OUTSIDE CONTENT AREA (0):
+[ 10714 ms] 
+[ 10798 ms] [shot] update-dialog.png 1060x700 framesBefore=406
+[ 10895 ms] tick frames=406 stage=1060.0x700.0 scene=1060.0x700.0
+[ 10915 ms] [screen] update-dialog-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 11192 ms] queue: close update dialog
+[ 11196 ms] clicking .secondary-button: Позже
+[ 11894 ms] queue: expand sidebar
+[ 11898 ms] tick frames=468 stage=1060.0x700.0 scene=1060.0x700.0
+[ 12697 ms] queue: dump sidebar expanded
+[ 12697 ms] ================ sidebar-expanded ================
+[ 12699 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[ 12699 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=518
+[ 12700 ms] center(content) = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[ 12700 ms] SIZES: shell min=-1.0x-1.0 pref=928.0x730.0
+[ 12701 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[ 12701 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 872,0x636,0]
+[ 12701 ms]        sidebar min=-1.0x-1.0 pref=174.0x254.0
+[ 12701 ms]        sidebar local=[0,0,0,0 174,0x650,0] scene=[0,0,50,0 174,0x650,0] | labels: "Игры" vis=true man=true op=1,00; "Профиль" vis=true man=true op=1,00; "Плагины" vis=true man=true op=1,00; "Настройки" vis=true man=true op=1,00; "Закрыть" vis=true man=true op=1,00; 
+[ 12702 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[ 12702 ms] pageScroll = local=[0,0,0,0 872,0x636,0] scene=[174,0,50,0 872,0x636,0]
+[ 12703 ms] viewport   = local=[0,0,0,0 868,0x632,0] scene=[176,0,52,0 868,0x632,0]
+[ 12704 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0] visible=false
+[ 12704 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[174,0,50,0 20,0x100,0]
+[ 12704 ms] content(pageLayer) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[ 12704 ms]   pref   = 736.0 x 662.0
+[ 12704 ms]   pref@viewportW = 490.0
+[ 12704 ms]   min    = 301.0 x 318.0
+[ 12704 ms]   actual = 868.0 x 490.0
+[ 12705 ms]   contentBias = HORIZONTAL
+[ 12705 ms]   child(page) = local=[0,0,0,0 868,0x490,0] scene=[176,0,52,0 868,0x490,0]
+[ 12705 ms]     pref    = 736.0 x 662.0
+[ 12705 ms]     pref@w  = 490.0
+[ 12705 ms]     actual  = 868.0 x 490.0
+[ 12705 ms]     bias    = HORIZONTAL
+[ 12706 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[ 12706 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[ 12706 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[ 12706 ms]       child FlowPane local=[0,0,0,0 812,0x330,0] prefH=502.0
+[ 12707 ms]     sum(children prefHeight) = 402.0
+[ 12707 ms] vvalue = 0.0  hvalue = 0.0
+[ 12707 ms] OUTSIDE WINDOW (0):
+[ 12707 ms] OUTSIDE CONTENT AREA (0):
+[ 12708 ms] 
+[ 12814 ms] [shot] sidebar-expanded.png 1060x700 framesBefore=518
+[ 12900 ms] tick frames=518 stage=1060.0x700.0 scene=1060.0x700.0
+[ 12958 ms] [screen] sidebar-expanded-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 13299 ms] queue: collapse sidebar
+[ 13902 ms] tick frames=578 stage=1060.0x700.0 scene=1060.0x700.0
+[ 14301 ms] queue: dump sidebar collapsed
+[ 14302 ms] ================ sidebar-collapsed ================
+[ 14302 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[ 14303 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=603
+[ 14303 ms] center(content) = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[ 14303 ms] SIZES: shell min=-1.0x-1.0 pref=816.0x730.0
+[ 14303 ms]        content min=-1.0x-1.0 pref=740.0x666.0 childrenManaged=1
+[ 14305 ms]           child ScrollPane min=-1.0x-1.0 pref=740.0x666.0 managed=true local=[0,0,0,0 984,0x636,0]
+[ 14305 ms]        sidebar min=-1.0x-1.0 pref=62.0x254.0
+[ 14305 ms]        sidebar local=[0,0,0,0 62,0x650,0] scene=[0,0,50,0 62,0x650,0] | labels: "Игры" vis=false man=false op=0,00; "Профиль" vis=false man=false op=0,00; "Плагины" vis=false man=false op=0,00; "Настройки" vis=false man=false op=0,00; "Закрыть" vis=false man=false op=0,00; 
+[ 14305 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[ 14306 ms] pageScroll = local=[0,0,0,0 984,0x636,0] scene=[62,0,50,0 984,0x636,0]
+[ 14306 ms] viewport   = local=[0,0,0,0 980,0x632,0] scene=[64,0,52,0 980,0x632,0]
+[ 14306 ms] vbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0] visible=false
+[ 14306 ms] hbar       = local=[0,0,0,0 20,0x100,0] scene=[62,0,50,0 20,0x100,0]
+[ 14306 ms] content(pageLayer) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[ 14306 ms]   pref   = 736.0 x 662.0
+[ 14307 ms]   pref@viewportW = 490.0
+[ 14307 ms]   min    = 301.0 x 318.0
+[ 14308 ms]   actual = 980.0 x 490.0
+[ 14308 ms]   contentBias = HORIZONTAL
+[ 14308 ms]   child(page) = local=[0,0,0,0 980,0x490,0] scene=[64,0,52,0 980,0x490,0]
+[ 14308 ms]     pref    = 736.0 x 662.0
+[ 14308 ms]     pref@w  = 490.0
+[ 14308 ms]     actual  = 980.0 x 490.0
+[ 14309 ms]     bias    = HORIZONTAL
+[ 14309 ms]       child Label.label eyebrow local=[0,0,0,0 29,0x15,0] prefH=15.0
+[ 14309 ms]       child Label.label title-large local=[0,0,0,0 205,1x40,0] prefH=40.0
+[ 14309 ms]       child Label.label muted local=[0,0,0,0 227,0x17,0] prefH=17.0
+[ 14309 ms]       child FlowPane local=[0,0,0,0 924,0x330,0] prefH=502.0
+[ 14309 ms]     sum(children prefHeight) = 402.0
+[ 14309 ms] vvalue = 0.0  hvalue = 0.0
+[ 14310 ms] OUTSIDE WINDOW (1):
+[ 14310 ms]     ImageView.image-view wallpaper-view scene=[-3,4,-2,2 1066,7x704,5]
+[ 14310 ms] OUTSIDE CONTENT AREA (0):
+[ 14310 ms] 
+[ 14443 ms] [shot] sidebar-collapsed.png 1060x700 framesBefore=603
+[ 14584 ms] [screen] sidebar-collapsed-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 14905 ms] tick frames=605 stage=1060.0x700.0 scene=1060.0x700.0
+[ 15803 ms] queue: dump settings 100%
+[ 15808 ms] ================ settings-100 ================
+[ 15808 ms] scene = 1060.0 x 700.0   stage = 1060.0 x 700.0
+[ 15809 ms] shell = [0,0,0,0 1060,0x700,0]  shellScene = [0,0,0,0 1060,0x700,0]  scale=1.0  frames=652
+[ 15809 ms] center(content) = local=[0,0,0,0 916,0x636,0] scene=[130,0,50,0 916,0x636,0]
+[ 15809 ms] SIZES: shell min=-1.0x-1.0 pref=1097.0x2093.0
+[ 15811 ms]        content min=-1.0x-1.0 pref=953.0x2029.0 childrenManaged=1
+[ 15811 ms]           child ScrollPane min=-1.0x-1.0 pref=953.0x2029.0 managed=true local=[0,0,0,0 916,0x636,0]
+[ 15811 ms]        sidebar min=-1.0x-1.0 pref=129.1769547325103x254.0
+[ 15813 ms]        sidebar local=[0,0,0,0 130,0x650,0] scene=[0,0,50,0 130,0x650,0] | labels: "Игры" vis=false man=false op=0,00; "Профиль" vis=false man=false op=0,00; "Плагины" vis=false man=false op=0,00; "Настройки" vis=false man=false op=0,00; "Закрыть" vis=false man=false op=0,00; 
+[ 15813 ms]        titlebar min=-1.0x-1.0 pref=253.0x50.0
+[ 15814 ms] pageScroll = local=[0,0,0,0 916,0x636,0] scene=[130,0,50,0 916,0x636,0]
+[ 15814 ms] viewport   = local=[0,0,0,0 896,0x632,0] scene=[132,0,52,0 896,0x632,0]
+[ 15815 ms] vbar       = local=[0,0,-1,0 21,0x102,0] scene=[179,0,1758,0 21,0x102,0] visible=false
+[ 15815 ms] hbar       = local=[0,0,-1,0 21,0x102,0] scene=[179,0,1758,0 21,0x102,0]
+[ 15816 ms] content(pageLayer) = local=[0,0,0,0 896,0x2042,0] scene=[132,0,52,0 896,0x2042,0]
+[ 15816 ms]   pref   = 949.0 x 2025.0
+[ 15817 ms]   pref@viewportW = 2042.0
+[ 15817 ms]   min    = 334.0 x 2009.0
+[ 15818 ms]   actual = 896.0 x 2042.0
+[ 15818 ms]   contentBias = HORIZONTAL
+[ 15819 ms]   child(page) = local=[0,0,0,0 896,0x2042,0] scene=[132,0,52,0 896,0x2042,0]
+[ 15820 ms]     pref    = 949.0 x 2121.0
+[ 15820 ms]     pref@w  = 2042.0
+[ 15820 ms]     actual  = 896.0 x 2042.0
+[ 15821 ms]     bias    = HORIZONTAL
+[ 15822 ms]       child Label.label eyebrow local=[0,0,0,0 63,0x15,0] prefH=15.0
+[ 15822 ms]       child Label.label title-large local=[0,0,0,0 232,0x40,0] prefH=40.0
+[ 15822 ms]       child Label.label muted local=[0,0,0,0 571,0x17,0] prefH=17.0
+[ 15822 ms]       child VBox.settings-section local=[0,0,0,0 840,0x134,0] prefH=134.0
+[ 15823 ms]       child VBox.settings-section local=[0,0,0,0 840,0x114,0] prefH=114.0
+[ 15823 ms]       child VBox.settings-section local=[0,0,0,0 840,0x114,0] prefH=114.0
+[ 15824 ms]       child VBox.settings-section local=[0,0,0,0 840,0x152,0] prefH=152.0
+[ 15824 ms]       child VBox.settings-section local=[0,0,0,0 840,0x521,0] prefH=617.0
+[ 15824 ms]       child VBox.settings-section local=[0,0,0,0 840,0x164,0] prefH=164.0
+[ 15825 ms]       child VBox.settings-section local=[0,0,0,0 840,0x243,0] prefH=224.0
+[ 15825 ms]       child VBox.settings-section local=[0,0,0,0 840,0x93,0] prefH=93.0
+[ 15826 ms]       child VBox.settings-section local=[0,0,0,0 840,0x103,0] prefH=103.0
+[ 15826 ms]       child VBox.settings-section local=[0,0,0,0 840,0x138,0] prefH=138.0
+[ 15826 ms]     sum(children prefHeight) = 1846.0
+[ 15827 ms] vvalue = 0.0  hvalue = 0.0
+[ 15829 ms] OUTSIDE WINDOW (130):
+[ 15830 ms]     ImageView.image-view wallpaper-view scene=[-6,2,-4,1 1072,5x708,2]
+[ 15830 ms]         scene=[132,0,52,0 896,0x2042,0]
+[ 15830 ms]         StackPane.page-layer scene=[132,0,52,0 896,0x2042,0]
+[ 15830 ms]          VBox scene=[132,0,52,0 896,0x2042,0]
+[ 15831 ms]           VBox.settings-section scene=[160,0,582,0 840,0x152,0]
+[ 15831 ms]            Label.label setting-label scene=[178,0,699,0 130,0x17,0] text="Текущая тема: Розовый"
+[ 15831 ms]             LabeledText.text scene=[178,0,699,0 129,2x17,0]
+[ 15831 ms]           VBox.settings-section scene=[160,0,746,0 840,0x521,0]
+[ 15831 ms]            Label.label section-title scene=[178,0,764,0 98,0x20,0] text="Фон лаунчера"
+[ 15832 ms]             LabeledText.text scene=[178,0,764,0 97,0x20,0]
+[ 15832 ms]            Label.label muted scene=[178,0,796,0 266,0x17,0] text="Выберите фон, затемнение и живую анимаци…"
+[ 15832 ms]             LabeledText.text scene=[178,0,796,0 265,4x17,0]
+[ 15832 ms]            FlowPane scene=[178,0,825,0 804,0x182,0]
+[ 15832 ms]             StackPane.wallpaper-choice scene=[178,0,825,0 150,0x84,0]
+[ 15832 ms]              ImageView.image-view wallpaper-thumb scene=[179,0,826,0 150,0x84,0]
+[ 15833 ms]             StackPane.wallpaper-choice scene=[340,0,825,0 150,0x84,0]
+[ 15833 ms]              ImageView.image-view wallpaper-thumb scene=[341,0,826,0 150,0x84,0]
+[ 15833 ms]             StackPane.wallpaper-choice scene=[502,0,825,0 150,0x84,0]
+[ 15833 ms]              ImageView.image-view wallpaper-thumb scene=[503,0,826,0 150,0x84,0]
+[ 15833 ms]             StackPane.wallpaper-choice scene=[664,0,825,0 150,0x84,0]
+[ 15835 ms]              ImageView.image-view wallpaper-thumb scene=[665,0,826,0 150,0x84,0]
+[ 15835 ms]             StackPane.wallpaper-choice scene=[826,0,825,0 150,0x84,0]
+[ 15835 ms]              ImageView.image-view wallpaper-thumb scene=[827,0,826,0 150,0x84,0]
+[ 15835 ms]             StackPane.wallpaper-choice scene=[178,0,921,0 150,0x84,0]
+[ 15835 ms]              ImageView.image-view wallpaper-thumb scene=[179,0,922,0 150,0x84,0]
+[ 15836 ms]            Button.button secondary-button scene=[178,0,1019,0 162,0x36,0]
+[ 15836 ms]             LabeledText.text scene=[192,0,1028,0 133,4x17,0]
+[ 15836 ms]            Label.label setting-label scene=[178,0,1066,0 98,0x17,0] text="Затемнение фона"
+[ 15836 ms]             LabeledText.text scene=[178,0,1066,0 97,2x17,0]
+[ 15836 ms]            Slider.slider scene=[178,0,1094,0 804,0x20,0]
+[ 15836 ms]             StackPane.track scene=[180,0,1099,0 800,0x7,0]
+[ 15837 ms]             .thumb scene=[483,6,1094,0 20,0x20,0]
+[ 15837 ms]            CheckBox.check-box settings-check scene=[178,0,1121,0 250,0x19,0]
+[ 15837 ms]             LabeledText.text scene=[200,9,1122,0 227,1x17,0]
+[ 15837 ms]             StackPane.box scene=[178,0,1121,0 18,0x19,0]
+[ 15837 ms]              StackPane.mark scene=[182,0,1124,0 11,0x12,0]
+[ 15837 ms]            Label.label setting-label scene=[178,0,1151,0 124,0x17,0] text="Сила «дыхания» — 2%"
+[ 15837 ms]             LabeledText.text scene=[178,0,1151,0 123,7x17,0]
+[ 15838 ms]            Slider.slider scene=[178,0,1179,0 804,0x20,0]
+[ 15838 ms]             StackPane.track scene=[180,0,1184,0 800,0x7,0]
+[ 15838 ms]             .thumb scene=[276,3,1179,0 20,0x20,0]
+[ 15838 ms]            Label.label setting-label scene=[178,0,1206,0 194,0x17,0] text="Скорость «дыхания» — 5 с на цикл"
+[ 15838 ms]             LabeledText.text scene=[178,0,1206,0 193,0x17,0]
+[ 15838 ms]            Slider.slider scene=[178,0,1234,0 804,0x20,0]
+[ 15839 ms]             StackPane.track scene=[180,0,1239,0 800,0x7,0]
+[ 15839 ms]             .thumb scene=[228,9,1234,0 20,0x20,0]
+[ 15839 ms]           VBox.settings-section scene=[160,0,1279,0 840,0x164,0]
+[ 15839 ms]            Label.label section-title scene=[178,0,1297,0 77,0x20,0] text="Интерфейс"
+[ 15839 ms]             LabeledText.text scene=[178,0,1297,0 76,3x20,0]
+[ 15839 ms]            Label.label muted scene=[178,0,1329,0 568,0x17,0] text="Отключите анимации или задайте их скорос…"
+[ 15840 ms]             LabeledText.text scene=[178,0,1329,0 567,5x17,0]
+[ 15840 ms]            CheckBox.check-box settings-check scene=[178,0,1358,0 367,0x19,0]
+[ 15840 ms]             LabeledText.text scene=[201,0,1359,0 343,8x17,0]
+[ 15840 ms]             StackPane.box scene=[178,0,1358,0 18,0x19,0]
+[ 15841 ms]              StackPane.mark scene=[182,0,1361,0 11,0x12,0]
+[ 15841 ms]            HBox scene=[178,0,1388,0 804,0x38,0]
+[ 15841 ms]             Button.button secondary-button scene=[178,0,1388,0 68,0x36,0]
+[ 15841 ms]              LabeledText.text scene=[192,0,1397,0 39,9x17,0]
+[ 15841 ms]             Button.button secondary-button scene=[256,0,1388,0 74,0x36,0]
+[ 15842 ms]              LabeledText.text scene=[270,0,1397,0 45,2x17,0]
+[ 15842 ms]             Button.button primary-button scene=[340,0,1388,0 90,0x38,0]
+[ 15842 ms]              LabeledText.text scene=[356,0,1398,0 57,1x17,0]
+[ 15842 ms]           VBox.settings-section scene=[160,0,1455,0 840,0x243,0]
+[ 15842 ms]            Label.label section-title scene=[178,0,1473,0 88,0x20,0] text="Кнопки окна"
+[ 15842 ms]             LabeledText.text scene=[178,0,1473,0 87,7x20,0]
+[ 15842 ms]            Label.label muted scene=[178,0,1505,0 804,0x34,0] text="Те же два варианта, что были при первона…"
+[ 15842 ms]             LabeledText.text scene=[178,0,1505,0 804,0x34,0]
+[ 15843 ms]            HBox scene=[162,0,1539,0 820,0x159,0]
+[ 15843 ms]             VBox.client-card choice-option selected scene=[162,0,1539,0 284,0x159,0]
+[ 15843 ms]              HBox scene=[195,0,1575,0 218,0x13,0]
+[ 15843 ms]               Button.button traffic-dot close scene=[195,0,1575,0 12,0x13,0]
+[ 15843 ms]                LabeledText.text scene=[201,0,1581,0 0,0x0,0]
+[ 15843 ms]               Button.button traffic-dot min scene=[214,0,1575,0 12,0x13,0]
+[ 15844 ms]                LabeledText.text scene=[220,0,1581,0 0,0x0,0]
+[ 15844 ms]               Button.button traffic-dot max scene=[233,0,1575,0 12,0x13,0]
+[ 15844 ms]                LabeledText.text scene=[239,0,1581,0 0,0x0,0]
+[ 15844 ms]              Label.label card-title scene=[195,0,1596,0 112,0x17,0] text="Точки как в macOS"
+[ 15844 ms]               LabeledText.text scene=[195,0,1596,0 111,6x17,0]
+[ 15844 ms]              Label.label card-version scene=[195,0,1622,0 218,0x32,0] text="Три кружка слева: закрыть, свернуть, раз…"
+[ 15844 ms]               LabeledText.text scene=[195,0,1622,0 218,0x32,0]
+[ 15844 ms]             VBox.client-card choice-option scene=[442,0,1551,0 252,0x127,0]
+[ 15845 ms]              HBox scene=[458,0,1567,0 220,0x29,0]
+[ 15845 ms]               Button.button win-button min scene=[458,0,1567,0 30,0x29,0]
+[ 15845 ms]                Group scene=[467,0,1580,0 12,5x2,5]
+[ 15845 ms]                 Path.win-glyph scene=[467,0,1580,0 12,5x2,5]
+[ 15845 ms]               Button.button win-button max scene=[495,0,1567,0 30,0x29,0]
+[ 15845 ms]                Group scene=[505,0,1576,0 10,5x10,5]
+[ 15845 ms]                 Rectangle.win-glyph scene=[505,0,1576,0 10,5x10,5]
+[ 15845 ms]               Button.button win-button close scene=[532,0,1567,0 30,0x29,0]
+[ 15847 ms]                Group scene=[541,0,1575,0 11,5x11,5]
+[ 15847 ms]                 Path.win-glyph scene=[541,0,1575,0 11,5x11,5]
+[ 15847 ms]              Label.label card-title scene=[458,0,1604,0 104,0x17,0] text="Обычные кнопки"
+[ 15847 ms]               LabeledText.text scene=[458,0,1604,0 103,3x17,0]
+[ 15847 ms]              Label.label card-version scene=[458,0,1630,0 220,0x32,0] text="Знаки справа: свернуть, развернуть, закр…"
+[ 15847 ms]               LabeledText.text scene=[458,0,1630,0 220,0x32,0]
+[ 15848 ms]           VBox.settings-section scene=[160,0,1708,0 840,0x93,0]
+[ 15848 ms]            Label.label section-title scene=[178,0,1726,0 109,0x20,0] text="Диск установки"
+[ 15848 ms]             LabeledText.text scene=[178,0,1726,0 108,0x20,0]
+[ 15848 ms]            HBox scene=[178,0,1758,0 804,0x26,0]
+[ 15848 ms]             ComboBox.combo-box-base combo-box scene=[178,0,1758,0 58,0x26,0]
+[ 15848 ms]              StackPane.arrow-button scene=[210,0,1758,0 26,0x25,0]
+[ 15849 ms]               Region.arrow scene=[220,0,1769,0 8,0x5,0]
+[ 15849 ms]              .list-view scene=[178,0,1758,0 1,0x1,0]
+[ 15849 ms]               VirtualFlow.virtual-flow scene=[179,0,1759,0 0,0x0,0]
+[ 15849 ms]                ClippedContainer.clipped-container scene=[179,0,1759,0 0,0x0,0]
+[ 15849 ms]                 Group.sheet scene=[178,0,1758,0 1,0x1,0]
+[ 15849 ms]                Group scene=[178,0,1758,0 1,0x1,0]
+[ 15850 ms]              .cell indexed-cell list-cell scene=[178,0,1758,0 32,0x25,0]
+[ 15850 ms]               LabeledText.text scene=[186,0,1762,0 10,0x17,0]
+[ 15850 ms]             Label.label value scene=[248,0,1762,0 147,0x17,0] text="142 ГБ свободно из 475 ГБ"
+[ 15850 ms]              LabeledText.text scene=[248,0,1762,0 146,0x17,0]
+[ 15850 ms]           VBox.settings-section scene=[160,0,1813,0 840,0x103,0]
+[ 15850 ms]            Label.label section-title scene=[178,0,1831,0 86,0x20,0] text="Обновления"
+[ 15850 ms]             LabeledText.text scene=[178,0,1831,0 85,7x20,0]
+[ 15850 ms]            HBox.updates-row scene=[178,0,1863,0 804,0x36,0]
+[ 15851 ms]             Button.button secondary-button scene=[178,0,1863,0 159,0x36,0]
+[ 15851 ms]              LabeledText.text scene=[192,0,1872,0 130,4x17,0]
+[ 15851 ms]             Label.label status scene=[349,0,1872,0 113,0x17,0] text="Текущая версия: dev"
+[ 15852 ms]              LabeledText.text scene=[349,0,1872,0 112,9x17,0]
+[ 15852 ms]           VBox.settings-section scene=[160,0,1928,0 840,0x138,0]
+[ 15852 ms]            Label.label section-title scene=[178,0,1946,0 145,0x20,0] text="Discord Rich Presence"
+[ 15852 ms]             LabeledText.text scene=[178,0,1946,0 144,2x20,0]
+[ 15852 ms]            Label.label muted scene=[178,0,1976,0 494,0x17,0] text="Показывает, что вы делаете: смотрите игр…"
+[ 15853 ms]             LabeledText.text scene=[178,0,1976,0 493,8x17,0]
+[ 15853 ms]            CheckBox.check-box settings-check scene=[178,0,2003,0 153,0x19,0]
+[ 15853 ms]             LabeledText.text scene=[201,0,2004,0 129,8x17,0]
+[ 15853 ms]             StackPane.box scene=[178,0,2003,0 18,0x19,0]
+[ 15854 ms]              StackPane.mark scene=[182,0,2006,0 11,0x11,0]
+[ 15854 ms]            Label.label status scene=[178,0,2031,0 170,0x17,0] text="Запущенных игр в системе нет"
+[ 15854 ms]             LabeledText.text scene=[178,0,2031,0 169,6x17,0]
+[ 15857 ms] OUTSIDE CONTENT AREA (137):
+[ 15858 ms]        scene=[132,0,52,0 896,0x2042,0]
+[ 15859 ms]        StackPane.page-layer scene=[132,0,52,0 896,0x2042,0]
+[ 15859 ms]         VBox scene=[132,0,52,0 896,0x2042,0]
+[ 15859 ms]          VBox.settings-section scene=[160,0,582,0 840,0x152,0]
+[ 15860 ms]           HBox scene=[178,0,661,0 804,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[178,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[214,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[250,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch selected scene=[286,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[322,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[358,0,661,0 26,0x26,0]
+[ 15860 ms]            StackPane.accent-swatch scene=[394,0,661,0 26,0x26,0]
+[ 15860 ms]           Label.label setting-label scene=[178,0,699,0 130,0x17,0] text="Текущая тема: Розовый"
+[ 15861 ms]            LabeledText.text scene=[178,0,699,0 129,2x17,0]
+[ 15861 ms]          VBox.settings-section scene=[160,0,746,0 840,0x521,0]
+[ 15861 ms]           Label.label section-title scene=[178,0,764,0 98,0x20,0] text="Фон лаунчера"
+[ 15861 ms]            LabeledText.text scene=[178,0,764,0 97,0x20,0]
+[ 15861 ms]           Label.label muted scene=[178,0,796,0 266,0x17,0] text="Выберите фон, затемнение и живую анимаци…"
+[ 15862 ms]            LabeledText.text scene=[178,0,796,0 265,4x17,0]
+[ 15862 ms]           FlowPane scene=[178,0,825,0 804,0x182,0]
+[ 15863 ms]            StackPane.wallpaper-choice scene=[178,0,825,0 150,0x84,0]
+[ 15863 ms]             ImageView.image-view wallpaper-thumb scene=[179,0,826,0 150,0x84,0]
+[ 15863 ms]            StackPane.wallpaper-choice scene=[340,0,825,0 150,0x84,0]
+[ 15863 ms]             ImageView.image-view wallpaper-thumb scene=[341,0,826,0 150,0x84,0]
+[ 15863 ms]            StackPane.wallpaper-choice scene=[502,0,825,0 150,0x84,0]
+[ 15864 ms]             ImageView.image-view wallpaper-thumb scene=[503,0,826,0 150,0x84,0]
+[ 15864 ms]            StackPane.wallpaper-choice scene=[664,0,825,0 150,0x84,0]
+[ 15864 ms]             ImageView.image-view wallpaper-thumb scene=[665,0,826,0 150,0x84,0]
+[ 15864 ms]            StackPane.wallpaper-choice scene=[826,0,825,0 150,0x84,0]
+[ 15864 ms]             ImageView.image-view wallpaper-thumb scene=[827,0,826,0 150,0x84,0]
+[ 15864 ms]            StackPane.wallpaper-choice scene=[178,0,921,0 150,0x84,0]
+[ 15864 ms]             ImageView.image-view wallpaper-thumb scene=[179,0,922,0 150,0x84,0]
+[ 15865 ms]           Button.button secondary-button scene=[178,0,1019,0 162,0x36,0]
+[ 15865 ms]            LabeledText.text scene=[192,0,1028,0 133,4x17,0]
+[ 15865 ms]           Label.label setting-label scene=[178,0,1066,0 98,0x17,0] text="Затемнение фона"
+[ 15865 ms]            LabeledText.text scene=[178,0,1066,0 97,2x17,0]
+[ 15865 ms]           Slider.slider scene=[178,0,1094,0 804,0x20,0]
+[ 15865 ms]            StackPane.track scene=[180,0,1099,0 800,0x7,0]
+[ 15865 ms]            .thumb scene=[483,6,1094,0 20,0x20,0]
+[ 15865 ms]           CheckBox.check-box settings-check scene=[178,0,1121,0 250,0x19,0]
+[ 15866 ms]            LabeledText.text scene=[200,9,1122,0 227,1x17,0]
+[ 15866 ms]            StackPane.box scene=[178,0,1121,0 18,0x19,0]
+[ 15866 ms]             StackPane.mark scene=[182,0,1124,0 11,0x12,0]
+[ 15866 ms]           Label.label setting-label scene=[178,0,1151,0 124,0x17,0] text="Сила «дыхания» — 2%"
+[ 15866 ms]            LabeledText.text scene=[178,0,1151,0 123,7x17,0]
+[ 15867 ms]           Slider.slider scene=[178,0,1179,0 804,0x20,0]
+[ 15867 ms]            StackPane.track scene=[180,0,1184,0 800,0x7,0]
+[ 15867 ms]            .thumb scene=[276,3,1179,0 20,0x20,0]
+[ 15867 ms]           Label.label setting-label scene=[178,0,1206,0 194,0x17,0] text="Скорость «дыхания» — 5 с на цикл"
+[ 15867 ms]            LabeledText.text scene=[178,0,1206,0 193,0x17,0]
+[ 15867 ms]           Slider.slider scene=[178,0,1234,0 804,0x20,0]
+[ 15868 ms]            StackPane.track scene=[180,0,1239,0 800,0x7,0]
+[ 15868 ms]            .thumb scene=[228,9,1234,0 20,0x20,0]
+[ 15868 ms]          VBox.settings-section scene=[160,0,1279,0 840,0x164,0]
+[ 15868 ms]           Label.label section-title scene=[178,0,1297,0 77,0x20,0] text="Интерфейс"
+[ 15869 ms]            LabeledText.text scene=[178,0,1297,0 76,3x20,0]
+[ 15869 ms]           Label.label muted scene=[178,0,1329,0 568,0x17,0] text="Отключите анимации или задайте их скорос…"
+[ 15869 ms]            LabeledText.text scene=[178,0,1329,0 567,5x17,0]
+[ 15869 ms]           CheckBox.check-box settings-check scene=[178,0,1358,0 367,0x19,0]
+[ 15870 ms]            LabeledText.text scene=[201,0,1359,0 343,8x17,0]
+[ 15870 ms]            StackPane.box scene=[178,0,1358,0 18,0x19,0]
+[ 15870 ms]             StackPane.mark scene=[182,0,1361,0 11,0x12,0]
+[ 15870 ms]           HBox scene=[178,0,1388,0 804,0x38,0]
+[ 15870 ms]            Button.button secondary-button scene=[178,0,1388,0 68,0x36,0]
+[ 15870 ms]             LabeledText.text scene=[192,0,1397,0 39,9x17,0]
+[ 15870 ms]            Button.button secondary-button scene=[256,0,1388,0 74,0x36,0]
+[ 15870 ms]             LabeledText.text scene=[270,0,1397,0 45,2x17,0]
+[ 15870 ms]            Button.button primary-button scene=[340,0,1388,0 90,0x38,0]
+[ 15871 ms]             LabeledText.text scene=[356,0,1398,0 57,1x17,0]
+[ 15871 ms]          VBox.settings-section scene=[160,0,1455,0 840,0x243,0]
+[ 15871 ms]           Label.label section-title scene=[178,0,1473,0 88,0x20,0] text="Кнопки окна"
+[ 15871 ms]            LabeledText.text scene=[178,0,1473,0 87,7x20,0]
+[ 15871 ms]           Label.label muted scene=[178,0,1505,0 804,0x34,0] text="Те же два варианта, что были при первона…"
+[ 15871 ms]            LabeledText.text scene=[178,0,1505,0 804,0x34,0]
+[ 15872 ms]           HBox scene=[162,0,1539,0 820,0x159,0]
+[ 15872 ms]            VBox.client-card choice-option selected scene=[162,0,1539,0 284,0x159,0]
+[ 15873 ms]             HBox scene=[195,0,1575,0 218,0x13,0]
+[ 15873 ms]              Button.button traffic-dot close scene=[195,0,1575,0 12,0x13,0]
+[ 15873 ms]               LabeledText.text scene=[201,0,1581,0 0,0x0,0]
+[ 15873 ms]              Button.button traffic-dot min scene=[214,0,1575,0 12,0x13,0]
+[ 15873 ms]               LabeledText.text scene=[220,0,1581,0 0,0x0,0]
+[ 15873 ms]              Button.button traffic-dot max scene=[233,0,1575,0 12,0x13,0]
+[ 15873 ms]               LabeledText.text scene=[239,0,1581,0 0,0x0,0]
+[ 15874 ms]             Label.label card-title scene=[195,0,1596,0 112,0x17,0] text="Точки как в macOS"
+[ 15874 ms]              LabeledText.text scene=[195,0,1596,0 111,6x17,0]
+[ 15874 ms]             Label.label card-version scene=[195,0,1622,0 218,0x32,0] text="Три кружка слева: закрыть, свернуть, раз…"
+[ 15874 ms]              LabeledText.text scene=[195,0,1622,0 218,0x32,0]
+[ 15875 ms]            VBox.client-card choice-option scene=[442,0,1551,0 252,0x127,0]
+[ 15875 ms]             HBox scene=[458,0,1567,0 220,0x29,0]
+[ 15875 ms]              Button.button win-button min scene=[458,0,1567,0 30,0x29,0]
+[ 15875 ms]               Group scene=[467,0,1580,0 12,5x2,5]
+[ 15875 ms]                Path.win-glyph scene=[467,0,1580,0 12,5x2,5]
+[ 15875 ms]              Button.button win-button max scene=[495,0,1567,0 30,0x29,0]
+[ 15876 ms]               Group scene=[505,0,1576,0 10,5x10,5]
+[ 15876 ms]                Rectangle.win-glyph scene=[505,0,1576,0 10,5x10,5]
+[ 15876 ms]              Button.button win-button close scene=[532,0,1567,0 30,0x29,0]
+[ 15876 ms]               Group scene=[541,0,1575,0 11,5x11,5]
+[ 15877 ms]                Path.win-glyph scene=[541,0,1575,0 11,5x11,5]
+[ 15877 ms]             Label.label card-title scene=[458,0,1604,0 104,0x17,0] text="Обычные кнопки"
+[ 15877 ms]              LabeledText.text scene=[458,0,1604,0 103,3x17,0]
+[ 15877 ms]             Label.label card-version scene=[458,0,1630,0 220,0x32,0] text="Знаки справа: свернуть, развернуть, закр…"
+[ 15877 ms]              LabeledText.text scene=[458,0,1630,0 220,0x32,0]
+[ 15877 ms]          VBox.settings-section scene=[160,0,1708,0 840,0x93,0]
+[ 15878 ms]           Label.label section-title scene=[178,0,1726,0 109,0x20,0] text="Диск установки"
+[ 15878 ms]            LabeledText.text scene=[178,0,1726,0 108,0x20,0]
+[ 15878 ms]           HBox scene=[178,0,1758,0 804,0x26,0]
+[ 15878 ms]            ComboBox.combo-box-base combo-box scene=[178,0,1758,0 58,0x26,0]
+[ 15878 ms]             StackPane.arrow-button scene=[210,0,1758,0 26,0x25,0]
+[ 15878 ms]              Region.arrow scene=[220,0,1769,0 8,0x5,0]
+[ 15878 ms]             .list-view scene=[178,0,1758,0 1,0x1,0]
+[ 15879 ms]              VirtualFlow.virtual-flow scene=[179,0,1759,0 0,0x0,0]
+[ 15879 ms]               ClippedContainer.clipped-container scene=[179,0,1759,0 0,0x0,0]
+[ 15879 ms]                Group.sheet scene=[178,0,1758,0 1,0x1,0]
+[ 15879 ms]               Group scene=[178,0,1758,0 1,0x1,0]
+[ 15879 ms]             .cell indexed-cell list-cell scene=[178,0,1758,0 32,0x25,0]
+[ 15879 ms]              LabeledText.text scene=[186,0,1762,0 10,0x17,0]
+[ 15880 ms]            Label.label value scene=[248,0,1762,0 147,0x17,0] text="142 ГБ свободно из 475 ГБ"
+[ 15880 ms]             LabeledText.text scene=[248,0,1762,0 146,0x17,0]
+[ 15880 ms]          VBox.settings-section scene=[160,0,1813,0 840,0x103,0]
+[ 15880 ms]           Label.label section-title scene=[178,0,1831,0 86,0x20,0] text="Обновления"
+[ 15880 ms]            LabeledText.text scene=[178,0,1831,0 85,7x20,0]
+[ 15881 ms]           HBox.updates-row scene=[178,0,1863,0 804,0x36,0]
+[ 15881 ms]            Button.button secondary-button scene=[178,0,1863,0 159,0x36,0]
+[ 15881 ms]             LabeledText.text scene=[192,0,1872,0 130,4x17,0]
+[ 15881 ms]            Label.label status scene=[349,0,1872,0 113,0x17,0] text="Текущая версия: dev"
+[ 15881 ms]             LabeledText.text scene=[349,0,1872,0 112,9x17,0]
+[ 15881 ms]          VBox.settings-section scene=[160,0,1928,0 840,0x138,0]
+[ 15881 ms]           Label.label section-title scene=[178,0,1946,0 145,0x20,0] text="Discord Rich Presence"
+[ 15882 ms]            LabeledText.text scene=[178,0,1946,0 144,2x20,0]
+[ 15882 ms]           Label.label muted scene=[178,0,1976,0 494,0x17,0] text="Показывает, что вы делаете: смотрите игр…"
+[ 15882 ms]            LabeledText.text scene=[178,0,1976,0 493,8x17,0]
+[ 15882 ms]           CheckBox.check-box settings-check scene=[178,0,2003,0 153,0x19,0]
+[ 15882 ms]            LabeledText.text scene=[201,0,2004,0 129,8x17,0]
+[ 15882 ms]            StackPane.box scene=[178,0,2003,0 18,0x19,0]
+[ 15882 ms]             StackPane.mark scene=[182,0,2006,0 11,0x11,0]
+[ 15883 ms]           Label.label status scene=[178,0,2031,0 170,0x17,0] text="Запущенных игр в системе нет"
+[ 15883 ms]            LabeledText.text scene=[178,0,2031,0 169,6x17,0]
+[ 15883 ms] 
+[ 15921 ms] tick frames=652 stage=1060.0x700.0 scene=1060.0x700.0
+[ 16027 ms] [shot] settings-100.png 1060x700 framesBefore=652
+[ 16277 ms] [screen] settings-100-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 16279 ms] ---- SCROLL TEST ----
+[ 16280 ms]   vvalue before = 0.0
+[ 16281 ms]   before child  layoutY=0.0 bounds=[0,0,0,0 896,0x2042,0] scene=[132,0,52,0 896,0x2042,0]
+[ 16282 ms]   vvalue after = 1.0
+[ 16282 ms]   after  child  layoutY=-1410.0 bounds=[0,0,0,0 896,0x2042,0] scene=[132,0,-1358,0 896,0x2042,0]
+[ 16505 ms] queue: shot window controls section
+[ 16510 ms] scroll .choice-option: v=1.000 content=2025 viewport=636
+[ 16638 ms] [shot] settings-window-controls.png 1060x700 framesBefore=667
+[ 16788 ms] [screen] settings-window-controls-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 16939 ms] tick frames=677 stage=1060.0x700.0 scene=1060.0x700.0
+[ 17407 ms] queue: switch window controls to dots in settings
+[ 17409 ms] onboarding options found: 2
+[ 17417 ms] clicked onboarding option 0
+[ 17952 ms] tick frames=740 stage=1060.0x700.0 scene=1060.0x700.0
+[ 18312 ms] queue: shot window controls after switch
+[ 18318 ms] scroll .choice-option: v=1.000 content=2025 viewport=636
+[ 18529 ms] [shot] settings-window-controls-dots.png 1060x700 framesBefore=763
+[ 18686 ms] [screen] settings-window-controls-dots-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 18688 ms] windowControls = dots
+[ 18959 ms] tick frames=780 stage=1060.0x700.0 scene=1060.0x700.0
+[ 19016 ms] queue: shot updates section
+[ 19021 ms] scroll .updates-row: v=1.000 content=2025 viewport=636
+[ 19233 ms] [shot] settings-updates.png 1060x700 framesBefore=784
+[ 19444 ms] [screen] settings-updates-screen.png 1660x1300 stage=[750,247 1060x700]
+[ 19445 ms] current version = dev
+[ 19720 ms] queue: personalization check
+[ 19727 ms] ---- PERSONALIZATION ----
+[ 19729 ms]   stage opacity = 1.0 (pref 1.0)
+[ 19730 ms]   accent pref   = pink
+[ 19736 ms]   accent css    = C:\Users\Kitikat\.nemesis\accent.css exists=true size=1555
+[ 19737 ms]   stylesheets   = [file:/C:/Users/Kitikat/Desktop/Loader/build/resources/main/styles.css, file:///C:/Users/Kitikat/.nemesis/accent.css]
+[ 19739 ms]   swatches      = 7
+[ 19743 ms]   running game  = null
+[ 19747 ms]   slider min=0.55 max=1.0 value=1.0
+[ 19749 ms]   slider min=0.4 max=1.0 value=0.4
+[ 19749 ms]   slider min=0.0 max=0.65 value=0.25388235294117645
+[ 19750 ms]   slider min=0.0 max=0.12 value=0.015388235294117647
+[ 19750 ms]   slider min=4.0 max=24.0 value=5.364705882352942
+[ 19751 ms]   section bg = 0x090f183b
+[ 19753 ms]   titlebar style= ""
+[ 19961 ms] tick frames=816 stage=1060.0x700.0 scene=1060.0x700.0
+[ 20965 ms] tick frames=879 stage=1060.0x700.0 scene=1060.0x700.0
+[ 21966 ms] tick frames=941 stage=1060.0x700.0 scene=1060.0x700.0
