@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <jpackage-state version="21.0.5" platform="windows">
   <app-version>1.7.1</app-version>
   <main-launcher>AttackLauncher</main-launcher>
