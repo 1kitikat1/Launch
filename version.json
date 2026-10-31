@@ -1,1 +1,5 @@
-{"url":"https://github.com/1kitikat1/Launch/releases/download/v1.7.2/AttackLauncher-1.7.2.zip","version":"1.7.2","notes":"v1.7.2: Attack DLC on Minecraft 26.2, black minimalist UI"}
+{
+  "version": "1.7.2",
+  "url": "https://github.com/1kitikat1/Launch/releases/download/v1.7.2/AttackLauncher-1.7.2.zip",
+  "notes": "v1.7.2: Attack DLC back on Minecraft 26.2, black minimalist UI, cfg BOM fix"
+}
