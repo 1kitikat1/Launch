@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<jpackage-state version="21.0.5" platform="windows">
+  <app-version>1.7.2</app-version>
+  <main-launcher>AttackLauncher</main-launcher>
+  <main-class>usa.kitikat.Boot</main-class>
+  <signed>false</signed>
+  <app-store>false</app-store>
+</jpackage-state>
