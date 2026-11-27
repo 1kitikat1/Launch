@@ -96,7 +96,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
-import usa.kitikat.AccentTheme.Option;
 import usa.kitikat.GitHubClient.ModsDiff;
 import usa.kitikat.UpdateChecker.Info;
 import usa.kitikat.account.AccountConfig;
@@ -130,8 +129,6 @@ public final class MainShell extends BorderPane {
    private long lastClientCheck;
    private FlowPane clientsGrid;
    private final ScrollPane pageScroll = new ScrollPane();
-   private final ImageView wallpaperView = new ImageView();
-   private final Rectangle wallpaperShade = new Rectangle();
    private final Preferences preferences = Preferences.userNodeForPackage(usa.kitikat.MainShell.class);
    private boolean discordRpcEnabled = true;
    private final MinecraftLauncher minecraftLauncher = new MinecraftLauncher();
@@ -161,12 +158,8 @@ public final class MainShell extends BorderPane {
    private Label barUserLabel;
    private boolean animationsEnabled;
    private double animSpeed = 1.0;
-   private boolean liveWallpaper;
    private String accentId;
-   private Timeline wallpaperPulse;
    private String accentCssUrl;
-   private boolean accentFromWallpaper;
-   private String accentFromWallpaperHex;
    private boolean animeIcons;
    private String lastDetails = "Attack Launcher";
    private String lastState = "Смотрит каталог игр";
@@ -197,10 +190,8 @@ public final class MainShell extends BorderPane {
       this.discordRpcEnabled = this.preferences.getBoolean("discordRpc", true);
       this.animationsEnabled = this.preferences.getBoolean("uiAnimations", true);
       this.animSpeed = this.preferences.getDouble("animSpeed", 1.0);
-      this.liveWallpaper = this.preferences.getBoolean("liveWallpaper", true);
       this.accentId = this.preferences.get("accent", "blue");
       this.animeIcons = this.preferences.getBoolean("animeIcons", false);
-      this.accentFromWallpaper = this.preferences.getBoolean("accentFromWallpaper", false);
 
       for (String var8 : this.preferences.get("clientUpdateMarkers", "").split(",")) {
          if (!var8.isBlank()) {
@@ -212,7 +203,7 @@ public final class MainShell extends BorderPane {
       Thread.setDefaultUncaughtExceptionHandler((var1x, var2x) -> this.logUpdate("необработанная ошибка в потоке " + var1x.getName(), var2x));
       migrateFromOldLauncher();
       this.build();
-      this.setupWallpaperLayer();
+      this.setupPageLayer();
       this.setWindowOpacity(this.preferences.getDouble("windowOpacity", 0.9));
       this.applyAccentTheme();
       this.startGameWatcher();
@@ -390,28 +381,13 @@ public final class MainShell extends BorderPane {
       BorderPane.setMargin(this.content, new Insets(0.0, 14.0, 14.0, 0.0));
    }
 
-   private void setupWallpaperLayer() {
-      this.wallpaperView.getStyleClass().add("wallpaper-view");
-      this.wallpaperView.setPreserveRatio(false);
-      this.wallpaperView.setManaged(false);
-      this.wallpaperView.setLayoutX(0.0);
-      this.wallpaperView.setLayoutY(0.0);
-      this.wallpaperView.fitWidthProperty().bind(this.widthProperty());
-      this.wallpaperView.fitHeightProperty().bind(this.heightProperty());
-      this.wallpaperView.setMouseTransparent(true);
-      this.wallpaperShade.getStyleClass().add("wallpaper-shade");
-      this.wallpaperShade.setManaged(false);
-      this.wallpaperShade.setMouseTransparent(true);
-      this.wallpaperShade.setFill(Color.BLACK);
-      this.wallpaperShade.widthProperty().bind(this.widthProperty());
-      this.wallpaperShade.heightProperty().bind(this.heightProperty());
+   private void setupPageLayer() {
       Rectangle var1 = new Rectangle();
       var1.widthProperty().bind(this.widthProperty());
       var1.heightProperty().bind(this.heightProperty());
       var1.setArcWidth(36.0);
       var1.setArcHeight(36.0);
       this.setClip(var1);
-      this.getChildren().addAll(0, List.of(this.wallpaperView, this.wallpaperShade));
       this.pageLayer.getStyleClass().add("page-layer");
       this.pageLayer.setMouseTransparent(false);
       this.pageLayer.setAlignment(Pos.TOP_LEFT);
@@ -424,91 +400,11 @@ public final class MainShell extends BorderPane {
       this.pageScroll.setMouseTransparent(false);
       this.pageScroll.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
       this.content.getChildren().setAll(new Node[]{this.pageScroll});
-      String var2 = this.preferences.get("wallpaper", "/assets/wallpapers/wallpaper1.jpg");
-      this.loadWallpaper(var2);
-      this.setWallpaperDim(this.preferences.getDouble("wallpaperDim", 0.28));
-      this.startWallpaperPulse();
    }
 
-   private void loadWallpaper(String var1) {
-      try {
-         Image var2;
-         if (var1.startsWith("/")) {
-            InputStream var5 = this.getClass().getResourceAsStream(var1);
-            if (var5 == null) {
-               throw new IOException("Ресурс не найден: " + var1);
-            }
-
-            var2 = new Image(var5);
-         } else {
-            var2 = new Image(Path.of(var1).toUri().toString());
-         }
-
-         this.wallpaperView.setImage(var2);
-         this.preferences.put("wallpaper", var1);
-      } catch (Exception var4) {
-         InputStream var3 = this.getClass().getResourceAsStream("/assets/wallpapers/wallpaper1.jpg");
-         if (var3 != null) {
-            this.wallpaperView.setImage(new Image(var3));
-         }
-      }
-
-      if (this.accentFromWallpaper) {
-         this.accentFromWallpaperHex = null;
-         this.applyAccentTheme();
-      }
-   }
-
-   private String pickWallpaperAccent() {
-      Image var1 = this.wallpaperView.getImage();
-      if (var1 != null && !(var1.getWidth() < 1.0) && !(var1.getHeight() < 1.0)) {
-         try {
-            int var2 = (int)var1.getWidth();
-            int var3 = (int)var1.getHeight();
-            PixelReader var4 = var1.getPixelReader();
-            if (var4 == null) {
-               return null;
-            } else {
-               long var5 = 0L;
-               long var7 = 0L;
-               long var9 = 0L;
-               long var11 = 0L;
-
-               for (int var13 = var3 / 4; var13 < var3 * 3 / 4; var13 += Math.max(1, var3 / 16)) {
-                  for (int var14 = var2 / 4; var14 < var2 * 3 / 4; var14 += Math.max(1, var2 / 16)) {
-                     int var15 = var4.getArgb(var14, var13);
-                     var5 += (long)(var15 >> 16 & 0xFF);
-                     var7 += (long)(var15 >> 8 & 0xFF);
-                     var9 += (long)(var15 & 0xFF);
-                     var11++;
-                  }
-               }
-
-               if (var11 == 0L) {
-                  return null;
-               } else {
-                  java.awt.Color var17 = new java.awt.Color(
-                     (int)Math.min(255.0, (double)(var5 / var11) * 1.4),
-                     (int)Math.min(255.0, (double)(var7 / var11) * 1.4),
-                     (int)Math.min(255.0, (double)(var9 / var11) * 1.4)
-                  );
-                  return String.format("#%02x%02x%02x", var17.getRed(), var17.getGreen(), var17.getBlue());
-               }
-            }
-         } catch (Throwable var16) {
-            return null;
-         }
-      } else {
-         return null;
-      }
-   }
-
-   private void setWallpaperDim(double var1) {
-      double var3 = Math.max(0.0, Math.min(0.75, var1));
-      this.wallpaperShade.setOpacity(var3);
-      this.preferences.putDouble("wallpaperDim", var3);
-   }
-
+   
+   
+   
    private Button dot(String var1) {
       Button var2 = new Button();
       var2.getStyleClass().addAll(new String[]{"traffic-dot", var1});
@@ -2031,293 +1927,103 @@ public final class MainShell extends BorderPane {
 
    private void showSettings() {
       this.discordUpdate("Настраивает Attack", "Настройки лаунчера");
-      VBox var1 = this.page(
-         "НАСТРОЙКИ", "Персонализация", "Масштаб, прозрачность, тема, оформление, фон, анимации, кнопки окна, диск установки и Discord Rich Presence."
-      );
-      VBox var2 = new VBox(12.0);
-      var2.getStyleClass().add("settings-section");
-      Label var3 = new Label("Размер окна");
-      var3.getStyleClass().add("section-title");
-      Label var4 = new Label("Масштаб интерфейса: окно, шрифты (включая боковое меню) и все элементы.");
-      var4.getStyleClass().add("muted");
-      HBox var5 = new HBox(10.0);
-      double var6 = this.preferences.getDouble("uiScale", 1.0);
+      VBox page = this.page("НАСТРОЙКИ", "Лаунчер", "Диск установки, обновления и Discord Rich Presence.");
 
-      for (double var11 : new double[]{0.5, 0.75, 1.0}) {
-         Button var13 = new Button(Math.round(var11 * 100.0) + "%");
-         boolean var14 = Math.abs(var11 - var6) < 0.001;
-         var13.getStyleClass().add(var14 ? "primary-button" : "secondary-button");
-         var13.setOnAction(var3x -> {
-            this.preferences.putDouble("uiScale", var11);
-            if (this.scaleApplier != null) {
-               this.scaleApplier.accept(var11);
-            }
-
-            this.showSettings();
-         });
-         var5.getChildren().add(var13);
+      /* ---------- Диск установки ---------- */
+      List<String> drives = this.installDrives();
+      String selected = this.installDrive();
+      if (!drives.contains(selected)) {
+         drives.add(0, selected);
       }
 
-      var2.setMaxWidth(Double.MAX_VALUE);
-      var2.getChildren().addAll(new Node[]{var3, var4, var5});
-      double var64 = this.preferences.getDouble("windowOpacity", 0.9);
-      Label var65 = new Label(Math.round(var64 * 100.0) + "%");
-      var65.getStyleClass().add("value");
-      Slider var66 = new Slider(0.55, 1.0, var64);
-      var66.setShowTickLabels(false);
-      var66.setShowTickMarks(false);
-      HBox var12 = new HBox(14.0, new Node[]{var65, var66});
-      var12.setAlignment(Pos.CENTER_LEFT);
-      HBox.setHgrow(var66, Priority.ALWAYS);
-      var66.valueProperty().addListener((var2x, var3x, var4x) -> {
-         this.setWindowOpacity(var4x.doubleValue());
-         var65.setText(Math.round(var4x.doubleValue() * 100.0) + "%");
-      });
-      VBox var67 = this.settingsSection(
-         "Прозрачность окна",
-         "От 55% до 100%. Сквозь окно и сквозь карточки всегда видно обои — панели останутся полупрозрачными на любой прозрачности.",
-         var12
-      );
-      double var68 = this.preferences.getDouble("panelDensity", 1.0);
-      Label var16 = new Label(Math.round(var68 * 100.0) + "%");
-      var16.getStyleClass().add("value");
-      Slider var17 = new Slider(0.4, 1.0, var68);
-      var17.setShowTickLabels(false);
-      var17.setShowTickMarks(false);
-      HBox var18 = new HBox(14.0, new Node[]{var16, var17});
-      var18.setAlignment(Pos.CENTER_LEFT);
-      HBox.setHgrow(var17, Priority.ALWAYS);
-      var17.valueProperty().addListener((var2x, var3x, var4x) -> {
-         this.preferences.putDouble("panelDensity", var4x.doubleValue());
-         var16.setText(Math.round(var4x.doubleValue() * 100.0) + "%");
-         this.applyAccentTheme();
-      });
-      VBox var19 = this.settingsSection(
-         "Плотность панелей и карточек", "100% — как в стиле лаунчера. Меньше — секции, карточки и кнопки прозрачнее, сквозь них сильнее видно обои.", var18
-      );
-      HBox var20 = new HBox(10.0);
-      var20.setAlignment(Pos.CENTER_LEFT);
+      HBox pills = new HBox(6.0);
+      pills.setAlignment(Pos.CENTER_LEFT);
 
-      for (Option var22 : AccentTheme.OPTIONS) {
-         StackPane var23 = new StackPane();
-         var23.getStyleClass().add("accent-swatch");
-         var23.setStyle("-fx-background-color: " + var22.hex() + ";");
-         if (var22.id().equalsIgnoreCase(this.accentId)) {
-            var23.getStyleClass().add("selected");
+      for (String drive : drives) {
+         Button pill = new Button(drive);
+         pill.getStyleClass().add("duration-pill");
+         pill.setPrefSize(50.0, 28.0);
+         pill.setOnAction(e -> {
+            this.preferences.put("installDrive", drive);
+            this.showSettings();
+         });
+         if (drive.equals(selected)) {
+            pill.getStyleClass().add("duration-pill-selected");
          }
 
-         Tooltip.install(var23, new Tooltip(var22.name()));
-         var23.setOnMouseClicked(var2x -> {
-            this.accentId = var22.id();
-            this.preferences.put("accent", this.accentId);
-            this.applyAccentTheme();
-            this.showSettings();
-         });
-         var20.getChildren().add(var23);
+         pills.getChildren().add(pill);
       }
 
-      Label var69 = new Label("Текущая тема: " + AccentTheme.byId(this.accentId).name());
-      var69.getStyleClass().add("setting-label");
-      VBox var70 = this.settingsSection("Тема", "Акцентный цвет: кнопки, слайдеры, чекбоксы, подсветка карточек и меню.", var20, var69);
-      CheckBox var71 = new CheckBox("Аниме-пак — милые иконки в меню вместо штриховых");
-      var71.getStyleClass().add("settings-check");
-      var71.setSelected(this.animeIcons);
-      var71.selectedProperty().addListener((var1x, var2x, var3x) -> {
-         this.animeIcons = var3x;
-         this.preferences.putBoolean("animeIcons", var3x);
-         this.refreshNavIcons();
-      });
-      CheckBox var24 = new CheckBox("Цвет из фона — акцент берётся из текущих обоев");
-      var24.getStyleClass().add("settings-check");
-      var24.setSelected(this.accentFromWallpaper);
-      var24.selectedProperty().addListener((var1x, var2x, var3x) -> {
-         this.accentFromWallpaper = var3x;
-         this.preferences.putBoolean("accentFromWallpaper", var3x);
-         this.accentFromWallpaperHex = null;
-         this.applyAccentTheme();
-      });
-      VBox var25 = this.settingsSection(
-         "Оформление",
-         "Аниме-пак меняет иконки бокового меню. «Цвет из фона» перекрашивает лаунчер под главный цвет обоев — при смене фона цвет обновится сам.",
-         var71,
-         var24
-      );
-      VBox var26 = new VBox(12.0);
-      var26.getStyleClass().add("settings-section");
-      Label var27 = new Label("Фон лаунчера");
-      var27.getStyleClass().add("section-title");
-      Label var28 = new Label("Выберите фон, затемнение и живую анимацию.");
-      var28.getStyleClass().add("muted");
-      FlowPane var29 = new FlowPane(10.0, 10.0);
+      Label space = new Label(this.driveSpace(selected));
+      space.getStyleClass().add("value");
+      HBox driveRow = new HBox(12.0, new Node[]{pills, space});
+      driveRow.setAlignment(Pos.CENTER_LEFT);
+      VBox driveSection = this.settingsSection("Диск установки", null, driveRow);
 
-      for (int var30 = 1; var30 <= 6; var30++) {
-         var29.getChildren().add(this.wallpaperChoice(var30));
-      }
+      /* ---------- Обновления ---------- */
+      Button check = new Button("Проверить обновления");
+      check.getStyleClass().add("secondary-button");
+      Label version = new Label("Текущая версия: " + UpdateChecker.currentVersion());
+      version.getStyleClass().add("status");
+      HBox updateRow = new HBox(12.0, new Node[]{check, version});
+      updateRow.setAlignment(Pos.CENTER_LEFT);
+      updateRow.getStyleClass().add("updates-row");
+      check.setOnAction(e -> {
+         String current = UpdateChecker.currentVersion();
+         if ("dev".equals(current)) {
+            version.setText("Dev-сборка без версии — обновляться нечем.");
+         } else {
+            check.setDisable(true);
+            this.statusSafe(version, "Проверяем обновления лаунчера...");
+            Thread worker = new Thread(() -> {
+               try {
+                  Info info = UpdateChecker.fetch(UpdateChecker.versionUrl());
+                  if (UpdateChecker.isNewer(current, info.version())) {
+                     this.statusSafe(version, "Доступна версия " + info.version() + " — качаем в фоне");
+                     this.logUpdate("доступна версия " + info.version() + ": " + (info.notes() == null ? "" : info.notes()));
+                     Platform.runLater(() -> this.startBackgroundUpdate(info));
+                  } else {
+                     this.statusSafe(version, "У вас последняя версия (" + current + ")");
+                  }
+               } catch (Throwable t) {
+                  this.statusSafe(version, "Ошибка: " + this.safeError(t));
+               } finally {
+                  Platform.runLater(() -> check.setDisable(false));
+               }
+            }, "update-check");
+            worker.setDaemon(true);
+            worker.start();
+         }
+      });
+      VBox updatesSection = this.settingsSection("Обновления", null, updateRow);
 
-      Button var72 = new Button("Выбрать изображение…");
-      var72.getStyleClass().add("secondary-button");
-      var72.setOnAction(var1x -> this.chooseWallpaper());
-      Slider var31 = new Slider(0.0, 0.65, this.preferences.getDouble("wallpaperDim", 0.28));
-      var31.setShowTickLabels(false);
-      var31.setShowTickMarks(false);
-      var31.valueProperty().addListener((var1x, var2x, var3x) -> this.setWallpaperDim(var3x.doubleValue()));
-      Label var32 = new Label("Затемнение фона");
-      var32.getStyleClass().add("setting-label");
-      CheckBox var33 = new CheckBox("Живой фон — плавное «дыхание» обоев");
-      var33.getStyleClass().add("settings-check");
-      var33.setSelected(this.liveWallpaper);
-      var33.selectedProperty().addListener((var1x, var2x, var3x) -> {
-         this.liveWallpaper = var3x;
-         this.preferences.putBoolean("liveWallpaper", var3x);
-         this.startWallpaperPulse();
-      });
-      double var34 = this.preferences.getDouble("pulseAmount", 0.06);
-      Label var36 = new Label("Сила «дыхания» — " + Math.round(var34 * 100.0) + "%");
-      var36.getStyleClass().add("setting-label");
-      Slider var37 = new Slider(0.0, 0.12, var34);
-      var37.setShowTickLabels(false);
-      var37.setShowTickMarks(false);
-      var37.valueProperty().addListener((var2x, var3x, var4x) -> {
-         this.preferences.putDouble("pulseAmount", var4x.doubleValue());
-         var36.setText("Сила «дыхания» — " + Math.round(var4x.doubleValue() * 100.0) + "%");
-         this.startWallpaperPulse();
-      });
-      double var38 = this.preferences.getDouble("pulseSeconds", 10.0);
-      Label var40 = new Label("Скорость «дыхания» — " + Math.round(var38) + " с на цикл");
-      var40.getStyleClass().add("setting-label");
-      Slider var41 = new Slider(4.0, 24.0, var38);
-      var41.setShowTickLabels(false);
-      var41.setShowTickMarks(false);
-      var41.valueProperty().addListener((var2x, var3x, var4x) -> {
-         this.preferences.putDouble("pulseSeconds", var4x.doubleValue());
-         var40.setText("Скорость «дыхания» — " + Math.round(var4x.doubleValue()) + " с на цикл");
-         this.startWallpaperPulse();
-      });
-      var26.setMaxWidth(Double.MAX_VALUE);
-      var26.getChildren().addAll(new Node[]{var27, var28, var29, var72, var32, var31, var33, var36, var37, var40, var41});
-      CheckBox var42 = new CheckBox("Анимации интерфейса (смена страниц и появление карточек)");
-      var42.getStyleClass().add("settings-check");
-      var42.setSelected(this.animationsEnabled);
-      var42.selectedProperty().addListener((var1x, var2x, var3x) -> {
-         this.animationsEnabled = var3x;
-         this.preferences.putBoolean("uiAnimations", var3x);
-      });
-      double var43 = this.preferences.getDouble("animSpeed", 1.0);
-      HBox var45 = new HBox(10.0);
-      LinkedHashMap<String, Double> var46 = new LinkedHashMap<>();
-      var46.put("Быстро", Double.valueOf(0.6));
-      var46.put("Обычно", Double.valueOf(1.0));
-      var46.put("Медленно", Double.valueOf(1.6));
-
-      for (Entry<String, Double> var48 : var46.entrySet()) {
-         Button var49 = new Button((String)var48.getKey());
-         boolean var50 = Math.abs((Double)var48.getValue() - var43) < 0.001;
-         var49.getStyleClass().add(var50 ? "primary-button" : "secondary-button");
-         var49.setOnAction(var2x -> {
-            this.preferences.putDouble("animSpeed", (Double)var48.getValue());
-            this.animSpeed = (Double)var48.getValue();
-            this.showSettings();
-         });
-         var45.getChildren().add(var49);
-      }
-
-      VBox var73 = this.settingsSection(
-         "Интерфейс", "Отключите анимации или задайте их скорость — переходы между страницами и появление карточек.", var42, var45
-      );
-      VBox var74 = new VBox(10.0);
-      var74.getStyleClass().add("settings-section");
-      Label var75 = new Label("Discord Rich Presence");
-      var75.getStyleClass().add("section-title");
-      Label var76 = new Label("Показывает, что вы делаете: смотрите игру, настраиваете лаунчер или во что-то играете.");
-      var76.getStyleClass().add("muted");
-      CheckBox var51 = new CheckBox("Включить Rich Presence");
-      var51.getStyleClass().add("settings-check");
-      var51.setSelected(this.discordRpcEnabled);
-      var51.selectedProperty().addListener((var1x, var2x, var3x) -> {
-         this.discordRpcEnabled = var3x;
-         this.preferences.putBoolean("discordRpc", var3x);
-         if (var3x) {
+      /* ---------- Discord Rich Presence ---------- */
+      VBox discord = new VBox(10.0);
+      discord.getStyleClass().add("settings-section");
+      Label title = new Label("Discord Rich Presence");
+      title.getStyleClass().add("section-title");
+      Label subtitle = new Label("Показывает, что вы делаете: смотрите игру, настраиваете лаунчер или во что-то играете.");
+      subtitle.getStyleClass().add("muted");
+      CheckBox rpc = new CheckBox("Включить Rich Presence");
+      rpc.getStyleClass().add("settings-check");
+      rpc.setSelected(this.discordRpcEnabled);
+      rpc.selectedProperty().addListener((obs, oldValue, value) -> {
+         this.discordRpcEnabled = value;
+         this.preferences.putBoolean("discordRpc", value);
+         if (value) {
             this.refreshRpcIdentity();
          } else {
             this.discordUpdate(null, null);
          }
       });
-      Label var52 = new Label(this.runningGame != null ? "Сейчас в системе: " + this.runningGame : "Запущенных игр в системе нет");
-      var52.getStyleClass().add("status");
-      this.rpcStatusLabel = var52;
-      var74.setMaxWidth(Double.MAX_VALUE);
-      var74.getChildren().addAll(new Node[]{var75, var76, var51, var52});
-      List<String> var53 = this.installDrives();
-      String var54 = this.installDrive();
-      if (!var53.contains(var54)) {
-         var53.add(0, var54);
-      }
+      Label status = new Label(this.runningGame != null ? "Сейчас в системе: " + this.runningGame : "Запущенных игр в системе нет");
+      status.getStyleClass().add("status");
+      this.rpcStatusLabel = status;
+      discord.setMaxWidth(Double.MAX_VALUE);
+      discord.getChildren().addAll(new Node[]{title, subtitle, rpc, status});
 
-      HBox var55 = new HBox(6.0);
-      var55.setAlignment(Pos.CENTER_LEFT);
-
-      for (String var57 : var53) {
-         Button var58 = new Button(var57);
-         var58.getStyleClass().add("duration-pill");
-         var58.setPrefSize(50.0, 28.0);
-         var58.setOnAction(var2x -> {
-            this.preferences.put("installDrive", var57);
-            this.showSettings();
-         });
-         if (var57.equals(var54)) {
-            var58.getStyleClass().add("duration-pill-selected");
-         }
-
-         var55.getChildren().add(var58);
-      }
-
-      Label var77 = new Label(this.driveSpace(var54));
-      var77.getStyleClass().add("value");
-      HBox var78 = new HBox(12.0, new Node[]{var55, var77});
-      var78.setAlignment(Pos.CENTER_LEFT);
-      VBox var79 = this.settingsSection("Диск установки", null, var78);
-      VBox var59 = this.settingsSection(
-         "Кнопки окна",
-         "Те же два варианта, что были при первоначальной настройке: точки как в macOS или обычные кнопки под дизайн лаунчера. Шапка окна меняется сразу.",
-         this.windowControlsChoice()
-      );
-      Button var60 = new Button("Проверить обновления");
-      var60.getStyleClass().add("secondary-button");
-      Label var61 = new Label("Текущая версия: " + UpdateChecker.currentVersion());
-      var61.getStyleClass().add("status");
-      HBox var62 = new HBox(12.0, new Node[]{var60, var61});
-      var62.setAlignment(Pos.CENTER_LEFT);
-      var62.getStyleClass().add("updates-row");
-      var60.setOnAction(var3x -> {
-         String var4x = UpdateChecker.currentVersion();
-         if ("dev".equals(var4x)) {
-            var61.setText("Dev-сборка без версии — обновляться нечем.");
-         } else {
-            var60.setDisable(true);
-            this.statusSafe(var61, "Проверяем обновления Launch…");
-            Thread var5x = new Thread(() -> {
-               try {
-                  Info var4xx = UpdateChecker.fetch(UpdateChecker.versionUrl());
-                  if (UpdateChecker.isNewer(var4x, var4xx.version())) {
-                     this.statusSafe(var61, "Доступна версия " + var4xx.version() + " — качаем в фоне");
-                     this.logUpdate("доступна версия " + var4xx.version() + ": " + (var4xx.notes() == null ? "" : var4xx.notes()));
-                     Platform.runLater(() -> this.startBackgroundUpdate(var4xx));
-                  } else {
-                     this.statusSafe(var61, "У вас последняя версия (" + var4x + ")");
-                  }
-               } catch (Throwable var8) {
-                  this.statusSafe(var61, "Ошибка: " + this.safeError(var8));
-               } finally {
-                  Platform.runLater(() -> var60.setDisable(false));
-               }
-            }, "update-check");
-            var5x.setDaemon(true);
-            var5x.start();
-         }
-      });
-      VBox var63 = this.settingsSection("Обновления", null, var62);
-      var1.getChildren().addAll(new Node[]{var2, var67, var19, var70, var25, var26, var73, var59, var79, var63, var74});
-      this.swap(var1);
+      page.getChildren().addAll(new Node[]{driveSection, updatesSection, discord});
+      this.swap(page);
    }
 
    private VBox settingsSection(String var1, String var2, Node... var3) {
@@ -2338,36 +2044,8 @@ public final class MainShell extends BorderPane {
       return var4;
    }
 
-   private StackPane wallpaperChoice(int var1) {
-      StackPane var2 = new StackPane();
-      var2.getStyleClass().add("wallpaper-choice");
-      var2.setPrefSize(150.0, 84.0);
-      var2.setClip(this.roundedClip(150.0, 84.0, 10.0));
-      ImageView var3 = new ImageView(new Image(this.getClass().getResourceAsStream("/assets/wallpapers/wallpaper" + var1 + ".jpg")));
-      var3.setFitWidth(150.0);
-      var3.setFitHeight(84.0);
-      var3.setPreserveRatio(false);
-      var3.setSmooth(true);
-      Rectangle var4 = new Rectangle(150.0, 84.0);
-      var4.setArcWidth(18.0);
-      var4.setArcHeight(18.0);
-      var3.setClip(var4);
-      var3.getStyleClass().add("wallpaper-thumb");
-      var2.getChildren().add(var3);
-      var2.setOnMouseClicked(var2x -> this.loadWallpaper("/assets/wallpapers/wallpaper" + var1 + ".jpg"));
-      return var2;
-   }
-
-   private void chooseWallpaper() {
-      FileChooser var1 = new FileChooser();
-      var1.setTitle("Выберите фон");
-      var1.getExtensionFilters().add(new ExtensionFilter("Изображения", new String[]{"*.png", "*.jpg", "*.jpeg", "*.webp"}));
-      File var2 = var1.showOpenDialog(this.stage);
-      if (var2 != null) {
-         this.loadWallpaper(var2.getAbsolutePath());
-      }
-   }
-
+   
+   
    private void checkClientUpdatesOnStart() {
       long var1 = System.currentTimeMillis();
       if (var1 - this.lastClientCheck >= 300000L) {
@@ -3323,18 +3001,7 @@ public final class MainShell extends BorderPane {
 
    private void applyAccentTheme() {
       try {
-         String var1 = null;
-         if (this.accentFromWallpaper) {
-            if (this.accentFromWallpaperHex == null) {
-               this.accentFromWallpaperHex = this.pickWallpaperAccent();
-            }
-
-            var1 = this.accentFromWallpaperHex;
-         }
-
-         if (var1 == null || !var1.matches("#[0-9a-fA-F]{6}")) {
-            var1 = AccentTheme.byId(this.accentId).hex();
-         }
+         String var1 = AccentTheme.byId(this.accentId).hex();
 
          String var2 = AccentTheme.write(var1, this.preferences.getDouble("panelDensity", 1.0));
          Platform.runLater(() -> this.attachAccentCss(var2));
@@ -3372,39 +3039,6 @@ public final class MainShell extends BorderPane {
       this.accentCssUrl = var1;
    }
 
-   private void startWallpaperPulse() {
-      this.stopWallpaperPulse();
-      if (!this.liveWallpaper) {
-         this.wallpaperView.setScaleX(1.0);
-         this.wallpaperView.setScaleY(1.0);
-      } else {
-         double var1 = Math.max(0.0, Math.min(0.15, this.preferences.getDouble("pulseAmount", 0.06)));
-         double var3 = Math.max(3.0, Math.min(30.0, this.preferences.getDouble("pulseSeconds", 10.0)));
-         double var5 = 1.0 + var1;
-         this.wallpaperPulse = new Timeline(
-            new KeyFrame[]{
-               new KeyFrame(
-                  Duration.seconds(var3),
-                  new KeyValue[]{
-                     new KeyValue(this.wallpaperView.scaleXProperty(), var5, Interpolator.EASE_BOTH),
-                     new KeyValue(this.wallpaperView.scaleYProperty(), var5, Interpolator.EASE_BOTH)
-                  }
-               )
-            }
-         );
-         this.wallpaperPulse.setCycleCount(-1);
-         this.wallpaperPulse.setAutoReverse(true);
-         this.wallpaperPulse.play();
-      }
-   }
-
-   private void stopWallpaperPulse() {
-      if (this.wallpaperPulse != null) {
-         this.wallpaperPulse.stop();
-         this.wallpaperPulse = null;
-      }
-   }
-
    private void startGameWatcher() {
       try {
          this.gameWatcher = new GameActivityWatcher(var1 -> Platform.runLater(() -> this.onRunningGame(var1)));
@@ -3439,7 +3073,6 @@ public final class MainShell extends BorderPane {
 
    public void shutdown() {
       this.stopSidebarAnims();
-      this.stopWallpaperPulse();
       if (this.sessionWatcher != null) {
          this.sessionWatcher.interrupt();
          this.sessionWatcher = null;
